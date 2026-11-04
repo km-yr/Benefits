@@ -96,7 +96,7 @@
   <div class="header-content">
     <img class="logo-img" src="assets/logo.png" alt="Kongsberg Maritime"/>
     <h1>Benefity Pracownicze</h1>
-    <p>Witaj w zespole! Tutaj znajdziesz wszystkie benefity, które Ci przysługują — kliknij w kafelek, by dowiedzieć się więcej i jak z nich skorzystać.</p>
+    <p>Witaj w zespole! Tutaj znajdziesz wszystkie benefity, które Ci przysługują.<br>Kliknij w kafelek, by dowiedzieć się więcej i jak z nich skorzystać.</p>
   </div>
 </header>
 
@@ -119,8 +119,8 @@
 </div>
 
 <script>
-/* ============================================================
-   LISTA BENEFITÓW — tutaj edytujesz treści.
+/* 
+   LISTA BENEFITÓW
    Pola:
      icon      – emotka
      color     – tło kafelka
@@ -132,19 +132,19 @@
      link      – adres przycisku ("#" = przycisk ukryty)
      linkLabel – tekst przycisku
      contact   – linia kontaktowa
-   ============================================================ */
+   */
 const benefits = [
   { icon:"🏥", color:"#fff0f0", iconBg:"#ffe0e0", title:"Opieka Medyczna",
     short:"Prywatna opieka medyczna dla Ciebie i Twoich bliskich od Medicover.",
     desc:"Prywatna opieka medyczna dla Ciebie i Twoich bliskich od Medicover. W zależności od stażu pracy (do 3 miesięcy, do 1 roku oraz od 1 roku) przysługuje Ci odpowiedni pakiet opieki medycznej. Zakres pakietu sprawdzisz w aplikacji Medicover.",
     steps:["Od pierwszego dnia pracy w KM Poland automatycznie jesteś objęty/-a opieką medyczną — nie musisz się zapisywać.","Sprawdź zakres swojego pakietu w aplikacji mobilnej Medicover.","Chcesz dodać członka rodziny? Wypełnij deklarację przystąpienia do opieki członka rodziny oraz zgodę na potrącenie kosztów z wynagrodzenia.","Dostarcz oba dokumenty do kadr — i gotowe!"],
-    link:"https://masterx.sharepoint.com/:f:/s/KMASSzczecinPoland-EmployeeHandbook/IgDvnWIvynYgSo5DJirWbDkwAcbNzkRcMMUrtNNqSBse15Q?e=uyEMsJ", linkLabel:"Medicover - opieka medyczna", contact:"Kontakt: hr@firma.pl" },
+    link:"https://masterx.sharepoint.com/:f:/s/KMASSzczecinPoland-EmployeeHandbook/IgDvnWIvynYgSo5DJirWbDkwAcbNzkRcMMUrtNNqSBse15Q?e=uyEMsJ", linkLabel:"Medicover - opieka medyczna", contact:"Kontakt: kadry@km.kongsberg.com" },
 
   { icon:"🍽️", color:"#fff5ee", iconBg:"#ffe8d6", title:"Katering Pracowniczy",
     short:"Dofinansowanie do posiłków w pracy.",
     desc:"Dofinansowanie do posiłków w pracy. Dzienne dofinansowanie wynosi 20 zł i może być wykorzystane na cały asortyment dań w aplikacji Smartlunch przez pracowników pracujących stacjonarnie. Posiłki dostarczane są bezpośrednio do biura o określonych godzinach i będą czekały na Ciebie w wyznaczonym miejscu.",
     steps:["Złóż deklarację przystąpienia — zrobisz to podczas podpisywania umowy o pracę w pierwszym dniu.","Aktywuj konto w aplikacji Smartlunch i ciesz się świeżymi posiłkami i napojami w pracy."],
-    link:"https://masterx.sharepoint.com/:f:/s/KMASSzczecinPoland-EmployeeHandbook/IgBBtLJvgTGaQY2AkQlvkdHNAYFmyEeTtyu_CCqJ8kiXmmI?e=mITm5R", linkLabel:"Dofinansowanie posiłków", contact:"Kontakt: hr@firma.pl" },
+    link:"https://masterx.sharepoint.com/:f:/s/KMASSzczecinPoland-EmployeeHandbook/IgBBtLJvgTGaQY2AkQlvkdHNAYFmyEeTtyu_CCqJ8kiXmmI?e=mITm5R", linkLabel:"Dofinansowanie posiłków", contact:"Kontakt: kadry@km.kongsberg.com" },
 
   { icon:"🎓", color:"#fffbf0", iconBg:"#fff0c0", title:"Studia, Kursy, Szkolenia", short:"Dofinansowanie do Twojego rozwoju zawodowego.", desc:"Opis do uzupełnienia.", steps:["Krok do uzupełnienia."], link:"#", linkLabel:"", contact:"Kontakt: hr@firma.pl" },
   { icon:"🤝", color:"#f0f7ff", iconBg:"#dceeff", title:"Program Poleceń", short:"Poleć znajomego i odbierz nagrodę.", desc:"Opis do uzupełnienia.", steps:["Krok do uzupełnienia."], link:"#", linkLabel:"", contact:"Kontakt: hr@firma.pl" },
@@ -163,7 +163,7 @@ const benefits = [
   { icon:"❤️", color:"#fff0f0", iconBg:"#ffd5d5", title:"Inicjatywy Dobroczynne", short:"Pomagaj razem z nami — działaj dla dobra innych.", desc:"Opis do uzupełnienia.", steps:["Krok do uzupełnienia."], link:"#", linkLabel:"", contact:"Kontakt: hr@firma.pl" }
 ];
 
-/* ===== Render kafelków ===== */
+
 const grid = document.getElementById('grid');
 benefits.forEach((b, i) => {
   const card = document.createElement('button');
@@ -179,7 +179,7 @@ benefits.forEach((b, i) => {
   grid.appendChild(card);
 });
 
-/* ===== Modal ===== */
+
 const overlay = document.getElementById('overlay');
 const modal = document.getElementById('modal');
 
