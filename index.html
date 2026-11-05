@@ -81,13 +81,15 @@
   .steps-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #999; margin-bottom: 10px; }
   .modal ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
   .modal ol li { font-size: 0.88rem; color: #333; line-height: 1.6; }
+  .m-desc p + p { margin-top: 12px; }
+  .m-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
   .m-link {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 22px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: #6c63ff; color: #fff; text-decoration: none;
     border-radius: 8px; padding: 12px 20px; font-size: 0.88rem; font-weight: 600;
   }
   .m-link:hover { background: #574fd6; }
-  .m-contact { margin-top: 14px; font-size: 0.8rem; color: #555; font-weight: 500; }
+  .m-contact { margin-top: 14px; font-size: 0.8rem; color: #555; font-weight: 500; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -110,11 +112,11 @@
     <button class="modal-close" id="modalClose" aria-label="Zamknij">✕</button>
     <div class="m-icon" id="m-icon"></div>
     <h2 id="m-title"></h2>
-    <p class="m-desc" id="m-desc"></p>
+    <div class="m-desc" id="m-desc"></div>
     <div class="steps-title">Szczegóły</div>
     <ol id="m-steps"></ol>
-    <a class="m-link" id="m-link" href="#" target="_blank" rel="noopener"></a>
-    <p class="m-contact" id="m-contact"></p>
+    <div class="m-links" id="m-links"></div>
+    <div class="m-contact" id="m-contact"></div>
   </div>
 </div>
 
@@ -127,11 +129,14 @@
      iconBg    – tło ikony
      title     – tytuł kafelka
      short     – krótki opis na kafelku
-     desc      – pełny opis w oknie
+     desc      – pełny opis: tekst LUB lista akapitów ["akapit 1", "akapit 2"]
      steps     – lista punktów w sekcji "Szczegóły"
      link      – adres przycisku ("#" = przycisk ukryty)
      linkLabel – tekst przycisku
-     contact   – linia kontaktowa
+     links     – kilka przycisków: [{url:"...", label:"..."}, {url:"...", label:"..."}]
+     contact   – tekst LUB lista kontaktów ["Kontakt 1", "Kontakt 2"]
+   UWAGA: każdy klucz (desc, link, contact...) może wystąpić w obiekcie TYLKO RAZ.
+   Drugi o tej samej nazwie nadpisuje pierwszy.
    ============================================================ */
 const benefits = [
   { icon:"🏥", color:"#fff0f0", iconBg:"#ffe0e0", title:"Opieka Medyczna",
@@ -160,7 +165,7 @@ const benefits = [
  
   { icon:"📋", color:"#f5f0ff", iconBg:"#e8daff", title:"Rekrutacje Wewnętrzne", 
    short:"Rozwijaj karierę wewnątrz firmy.", 
-   desc:"Każdy pracownik może wziąć udział w prowadzonych rekrutacjach wewnętrznych. Informacje o stanowisku, warunkach oraz sposobie aplikowania zawsze są podane w mailu. Lista aktualnych rekrutacji wewnęrztnych znajduje się pod poniższym linkiem.", 
+   desc:"Każdy pracownik może wziąć udział w prowadzonych rekrutacjach wewnętrznych. Informacje o stanowisku, warunkach oraz sposobie aplikowania zawsze są podane w mailu. Lista aktualnych rekrutacji wewnętrznych znajduje się pod poniższym linkiem.", 
    steps:["Zapoznaj się z opisem oferty.","Uzupełnij CV według załączonego wzoru.","Wyślij CV pod podany w mailu adres."], 
    link:"https://masterx.sharepoint.com/:x:/r/sites/KMASSzczecinPoland-EmployeeHandbook/Delte%20dokumenter/9.%20Aktualne%20oferty%20pracy%20w%20KMPOL/Rekrutacje%20wewn%C4%99trzne/1.%20Rekrutacje%20wewn%C4%99trzne.xlsx?d=wf0b573aa3aff4b7785a6cd0eff8b9a09&csf=1&web=1&e=uHVRp6", linkLabel:"Aktualne rekrutacje wewnętrzne", contact:"Kontakt: km.rekrutacja@km.kongsberg.com" },
  
@@ -176,11 +181,21 @@ const benefits = [
    steps:["Złóż wniosek w KARO (Wnioski-> Wniosek o świadczenia z ZFŚS-> Wybierz odpowiednie)."], 
    link:"#", linkLabel:"", contact:"Kontakt: km.kadry.poland@km.kongsberg.com" },
  
-  { icon:"🌍", color:"#f0fffe", iconBg:"#d0f5f0", title:"Nauka Języków", 
-   short:"Angielski, Niemiecki i Norweski — lekcje dla pracowników.", 
-   desc:"Kongsberg Maritime Poland oferuje swoim Pracownikom możliwość bezpłatnej nauki 3 języków. Na platformie e-lerningowej eTutor można uczyć się angielskiego i niemieckiego. Ponadto każdy Pracownik może przekazać dostęp do platformy jednej, dowolnej osobie.", desc:"Dla osób chcących uczyć się norweskiego istnieje możliwość dołączenia do jednej z dwóch grup zaawansowania. Zajęcia odbywają się online oraz stacjonarnie. Czas nauki nie jest wliczony do czasu pracy.", 
-   steps:["Zapoznaj się z informacjami jak się zapisać do eTutor i na zajęcia z Norweskiego."], 
-   link:"https://masterx.sharepoint.com/:b:/r/sites/KMASSzczecinPoland-EmployeeHandbook/Delte%20dokumenter/Benefity/eTutor%20-%20j%C4%99zyk%20angielski%20i%20niemiecki/Informacje%20i%20instrukcje/eTutor%20-%20jak%20si%C4%99%20zapisa%C4%87%20-%20informacje.pdf?d=w380e05cdcdfd46adb266a24cc784840a&csf=1&web=1&e=B4bUBu", linkLabel:"eTutor - jak się zapisać", contact:"Kontakt: elzbieta.michalkiewicz@km.kongsberg.com", link:"https://masterx.sharepoint.com/:f:/r/sites/KMASSzczecinPoland-EmployeeHandbook/Delte%20dokumenter/Benefity/J%C4%99zyk%20norweski?d=w8a779273262848928f6c09b745b009cf&csf=1&web=1&e=KSAbTf", linkLabel:"Język Norweski", contact:"Kontakt: magdalena.drzewowska@km.kongsberg.com" },
+  { icon:"🌍", color:"#f0fffe", iconBg:"#d0f5f0", title:"Nauka Języków",
+   short:"Angielski, Niemiecki i Norweski — lekcje dla pracowników.",
+   desc:[
+     "Kongsberg Maritime Poland oferuje swoim Pracownikom możliwość bezpłatnej nauki 3 języków. Na platformie e-learningowej eTutor można uczyć się angielskiego i niemieckiego. Ponadto każdy Pracownik może przekazać dostęp do platformy jednej, dowolnej osobie.",
+     "Dla osób chcących uczyć się norweskiego istnieje możliwość dołączenia do jednej z dwóch grup zaawansowania. Zajęcia odbywają się online oraz stacjonarnie. Czas nauki nie jest wliczony do czasu pracy."
+   ],
+   steps:["Zapoznaj się z informacjami jak się zapisać do eTutor i na zajęcia z Norweskiego."],
+   links:[
+     { url:"https://masterx.sharepoint.com/:b:/r/sites/KMASSzczecinPoland-EmployeeHandbook/Delte%20dokumenter/Benefity/eTutor%20-%20j%C4%99zyk%20angielski%20i%20niemiecki/Informacje%20i%20instrukcje/eTutor%20-%20jak%20si%C4%99%20zapisa%C4%87%20-%20informacje.pdf?d=w380e05cdcdfd46adb266a24cc784840a&csf=1&web=1&e=B4bUBu", label:"eTutor - jak się zapisać" },
+     { url:"https://masterx.sharepoint.com/:f:/r/sites/KMASSzczecinPoland-EmployeeHandbook/Delte%20dokumenter/Benefity/J%C4%99zyk%20norweski?d=w8a779273262848928f6c09b745b009cf&csf=1&web=1&e=KSAbTf", label:"Język Norweski" }
+   ],
+   contact:[
+     "eTutor: elzbieta.michalkiewicz@km.kongsberg.com",
+     "Język norweski: magdalena.drzewowska@km.kongsberg.com"
+   ] },
  
   { icon:"🧠", color:"#f8f0ff", iconBg:"#edd5ff", title:"Hedepy", short:"Wsparcie zdrowia psychicznego online.", desc:"Opis do uzupełnienia.", steps:["Krok do uzupełnienia."], link:"#", linkLabel:"", contact:"Kontakt: hr@firma.pl" },
   { icon:"🧘", color:"#f0fff8", iconBg:"#c8f5e2", title:"Yoga", short:"Zajęcia jogi dla pracowników.", desc:"Opis do uzupełnienia.", steps:["Krok do uzupełnienia."], link:"#", linkLabel:"", contact:"Kontakt: hr@firma.pl" },
@@ -219,13 +234,16 @@ function openModal(i) {
   icon.textContent = b.icon;
   icon.style.background = b.iconBg;
   document.getElementById('m-title').textContent = b.title;
-  document.getElementById('m-desc').textContent = b.desc;
+  const descs = Array.isArray(b.desc) ? b.desc : [b.desc];
+  document.getElementById('m-desc').innerHTML = descs.map(d => `<p>${d}</p>`).join('');
   document.getElementById('m-steps').innerHTML = b.steps.map(s => `<li>${s}</li>`).join('');
-  const link = document.getElementById('m-link');
-  link.href = b.link;
-  link.textContent = '🔗 ' + (b.linkLabel || 'Więcej informacji');
-  link.style.display = (!b.link || b.link === '#') ? 'none' : 'inline-flex';
-  document.getElementById('m-contact').textContent = b.contact || '';
+  const links = b.links || [{ url: b.link, label: b.linkLabel }];
+  document.getElementById('m-links').innerHTML = links
+    .filter(l => l.url && l.url !== '#')
+    .map(l => `<a class="m-link" href="${l.url}" target="_blank" rel="noopener">🔗 ${l.label || 'Więcej informacji'}</a>`)
+    .join('');
+  const contacts = Array.isArray(b.contact) ? b.contact : (b.contact ? [b.contact] : []);
+  document.getElementById('m-contact').innerHTML = contacts.map(c => `<div>${c}</div>`).join('');
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   modal.scrollTop = 0;
